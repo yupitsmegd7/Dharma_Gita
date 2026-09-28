@@ -15,7 +15,7 @@
   <a href="#texts-and-trust">Texts &amp; trust</a>
 </p>
 
-<a href="https://dharma-gita-study.gouravduttagd7.chatgpt.site">Open the hosted preview</a><br>
+<a href="https://dharma-gita-five.vercel.app/">Open the hosted preview</a><br>
 <sub>Preview access depends on the site's sharing settings. The complete app can also be run locally.</sub>
 
 </div>
