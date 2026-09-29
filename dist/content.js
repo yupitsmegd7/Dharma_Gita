@@ -54,14 +54,224 @@ const REFLECTIONS={
 '18.73':['Clarity becomes action','Arjuna says his confusion is dispelled and resolves to act. It is his response at the end of a sustained dialogue.','After reflection, write down your next step and when you will take it.','What will you do with what you now understand?']
 };
 const JOURNEYS = [
-{id:'outcomes',name:'Fear of failure',hi:'परिणाम की चिंता',words:['fail','exam','interview','result','anxious','anxiety','worried','worry','overthink','nervous','anxiety','fear','career','भय','चिंता','परीक्षा','असफल','डर','darr','dar','future'],intro:'Begin with what is yours to do, find steadiness around the outcome, and return to one responsible action.',steps:[['2.47','Separate action from outcome','Start by identifying your responsibility without demanding a guaranteed reward.'],['2.48','Meet the result with steadiness','Once effort is clear, practice a balanced response to success and failure.'],['3.8','Choose the next action','Finish with something you can actually do, so reflection does not become avoidance.']],practice:'Write one action you can complete today and one result you will stop trying to control.'},
+{id:'outcomes',name:'Fear of failure',hi:'परिणाम की चिंता',words:['fail','exam','interview','result','nervous','fear','career','भय','परीक्षा','असफल','डर','darr','dar','future'],intro:'Begin with what is yours to do, find steadiness around the outcome, and return to one responsible action.',steps:[['2.47','Separate action from outcome','Start by identifying your responsibility without demanding a guaranteed reward.'],['2.48','Meet the result with steadiness','Once effort is clear, practice a balanced response to success and failure.'],['3.8','Choose the next action','Finish with something you can actually do, so reflection does not become avoidance.']],practice:'Write one action you can complete today and one result you will stop trying to control.'},
 {id:'anger',name:'Anger & reacting',hi:'क्रोध और प्रतिक्रिया',words:['angry','anger','rage','react','defensive','argue','argument','fight','insult','गुस्सा','क्रोध','झगड़ा','gussa','gusse'],intro:'Notice the escalation, protect your judgment, then choose speech that is both honest and considerate.',steps:[['2.62','Notice what keeps feeding the feeling','First look upstream: repeated dwelling can tighten attachment and desire.'],['2.63','Understand the cost of escalation','Next see why a pause matters: anger can disturb discernment.'],['17.15','Choose a better response','Now move from restraint to a truthful, useful way of speaking.']],practice:'Draft one sentence naming the problem without an insult. Wait until you can say it calmly.'},
 {id:'focus',name:'Distraction & procrastination',hi:'एकाग्रता और अभ्यास',words:['focus','distract','phone','scroll','procrast','lazy','study','discipline','habit','concentr','टाल','आलस','आदत','पढ़','ध्यान','padh','aadat'],intro:'Make the practice manageable, learn to return, and repeat without demanding perfection.',steps:[['6.17','Set a sustainable rhythm','Begin with moderation so the plan is possible in ordinary life.'],['6.26','Return when the mind wanders','Next practice the return itself rather than fighting every thought.'],['6.35','Repeat, with less clinging','End with practice and detachment, the response Krishna gives to a restless mind.']],practice:'Choose a ten-minute task. Put the distraction out of reach. When attention wanders, return to one next line.'},
-{id:'relationships',name:'Care & relationships',hi:'संबंध और करुणा',words:['love','partner','relationship','girlfriend','boyfriend','friend','family','hurt','care','breakup','break up','rejection','प्यार','रिश्ता','प्रेम','दुख','dost','pyar'],intro:'Begin with compassion, express the truth carefully, and examine the intention underneath your response.',steps:[['12.13','Begin with compassion','Meet the other person as someone with feelings, without hatred or possessiveness.'],['17.15','Speak with care','Turn that attitude into truthful, beneficial words.'],['17.16','Check the intention','End by asking whether your reply seeks understanding or retaliation.']],practice:'Ask what the other person needs you to understand, then reflect it back before giving your view. Boundaries and safety still matter.'},
-{id:'comparison',name:'Comparison & self-worth',hi:'तुलना और आत्मसम्मान',words:['compar','jealous','envy','worth','inferior','superior','ego','pride','confidence','self doubt','self-doubt','ईर्ष्या','तुलना','अहंकार'],intro:'Notice the comparison loop, become fairer toward yourself, and widen your respect for others.',steps:[['2.62','See the attention loop','Begin by noticing repeated dwelling on something you think will complete you.'],['6.5','Practice self-support','Then choose actions and self-talk that help you rise instead of tearing you down.'],['5.18','Practice equal regard','End by looking beyond status, appearance and rank when valuing people.']],practice:'Name one skill to practice and one person to treat with more respect today.'},
-{id:'decisions',name:'A difficult decision',hi:'धर्मसंकट और निर्णय',words:['decision','choose','choice','confus','purpose','duty','right','wrong','conflict','dharma','निर्णय','कर्तव्य','उलझन','सही','galat','sahi'],intro:'Admit uncertainty, seek sound guidance, then reflect and make a considered choice.',steps:[['2.7','Be honest about uncertainty','Start where Arjuna does: acknowledge that you need help discerning your duty.'],['4.34','Ask a sincere question','Move toward learning, with humility and inquiry rather than a demand for validation.'],['18.63','Take responsibility for the choice','After reflection, the decision must become your own considered action.']],practice:'List the people affected, your responsibilities, and one question to ask a trusted person.'},
-{id:'grief',name:'Loss & change',hi:'शोक और परिवर्तन',words:['grief','loss','lost','death','died','bereav','sad','lonely','change','शोक','मृत्यु','अकेला','उदास','खो'],intro:'Let the difficulty be acknowledged, make room for change, and seek a compassionate way through the day.',steps:[['2.7','Let yourself ask for support','Begin with an admission of difficulty rather than an expectation to have answers.'],['2.14','Give changing feelings room','Reflect on the changing nature of experience without demanding that grief end quickly.'],['12.13','Return to compassion','Close with a quality you can offer yourself and another person today.']],practice:'Choose one person you can contact and one small act of care. There is no required timetable for grief.'},
+{id:'relationships',name:'Care & relationships',hi:'संबंध और करुणा',words:['love','partner','relationship','girlfriend','boyfriend','friend','family','care','breakup','break up','rejection','प्यार','रिश्ता','प्रेम','दुख','dost','pyar'],intro:'Begin with compassion, express the truth carefully, and examine the intention underneath your response.',steps:[['12.13','Begin with compassion','Meet the other person as someone with feelings, without hatred or possessiveness.'],['17.15','Speak with care','Turn that attitude into truthful, beneficial words.'],['17.16','Check the intention','End by asking whether your reply seeks understanding or retaliation.']],practice:'Ask what the other person needs you to understand, then reflect it back before giving your view. Boundaries and safety still matter.'},
+{id:'comparison',name:'Comparison & self-worth',hi:'तुलना और आत्मसम्मान',words:['compar','worth','inferior','superior','confidence','self doubt','self-doubt','तुलना'],intro:'Notice the comparison loop, become fairer toward yourself, and widen your respect for others.',steps:[['2.62','See the attention loop','Begin by noticing repeated dwelling on something you think will complete you.'],['6.5','Practice self-support','Then choose actions and self-talk that help you rise instead of tearing you down.'],['5.18','Practice equal regard','End by looking beyond status, appearance and rank when valuing people.']],practice:'Name one skill to practice and one person to treat with more respect today.'},
+{id:'decisions',name:'A difficult decision',hi:'धर्मसंकट और निर्णय',words:['decision','choose','choice','confus','duty','right','wrong','conflict','dharma','निर्णय','कर्तव्य','उलझन','सही','galat','sahi'],intro:'Admit uncertainty, seek sound guidance, then reflect and make a considered choice.',steps:[['2.7','Be honest about uncertainty','Start where Arjuna does: acknowledge that you need help discerning your duty.'],['4.34','Ask a sincere question','Move toward learning, with humility and inquiry rather than a demand for validation.'],['18.63','Take responsibility for the choice','After reflection, the decision must become your own considered action.']],practice:'List the people affected, your responsibilities, and one question to ask a trusted person.'},
+{id:'grief',name:'Loss & change',hi:'शोक और परिवर्तन',words:['grief','loss','lost','death','died','bereav','sad','change','शोक','मृत्यु','उदास','खो'],intro:'Let the difficulty be acknowledged, make room for change, and seek a compassionate way through the day.',steps:[['2.7','Let yourself ask for support','Begin with an admission of difficulty rather than an expectation to have answers.'],['2.14','Give changing feelings room','Reflect on the changing nature of experience without demanding that grief end quickly.'],['12.13','Return to compassion','Close with a quality you can offer yourself and another person today.']],practice:'Choose one person you can contact and one small act of care. There is no required timetable for grief.'},
 {id:'desire',name:'Desire & attachment',hi:'इच्छा और आसक्ति',words:['desire','tempt','craving','lust','greed','attachment','addict','urge','लालच','कामना','वासना','इच्छा','आसक्ति'],intro:'Notice attachment developing, consider its consequences, and practice restraint without self-hatred.',steps:[['2.62','Notice what strengthens the urge','Start with attention: what repeatedly brings the object back into your mind?'],['16.21','Consider where it leads','Then examine the harm of unrestrained desire, anger and greed.'],['2.64','Practice a workable boundary','Finish with disciplined engagement rather than aversion or compulsive indulgence.']],practice:'Identify a trigger, create a small boundary, and choose a different action for the next ten minutes.'}
+];
+// These sequences and everyday examples are editorial applications, not a
+// prescribed sequence in the Gita. The source corpus and translations stay intact.
+JOURNEYS.push(
+{
+  id:'guilt', group:'feelings', name:'Guilt & regret', hi:'अपराधबोध और पछतावा',
+  words:['guilt','regret','remorse','past mistake','made a mistake','forgive myself','अपराधबोध','पछतावा','पछता','पश्चाताप','गलती','pachtava','pachtawa'],
+  intro:'Name what troubles your conscience, seek clarity about repair, then read Krishna’s invitation to take refuge in him.',
+  context:'Arjuna’s distress in 1.45 concerns the harm he anticipates in the coming war; it is not a confession of a past mistake. Applying this dialogue to regret is a modern reflection. In 18.66, surrender is specifically to Krishna, and traditions explain its relationship to duty differently. It is not permission to repeat harm or evade accountability.',
+  steps:[
+    ['1.45','Listen to the troubled conscience','Begin with Arjuna’s moral anguish before looking for relief. Naming the concern makes honest reflection possible.','If you broke a promise, describe what you did and who was affected, without turning it into a verdict on your whole life.'],
+    ['2.7','Ask what a responsible response requires','After naming the concern, follow Arjuna’s willingness to seek guidance rather than assume he already knows what is right.','Ask a trusted person how to make a sincere apology or repair the practical harm.'],
+    ['18.66','Bring regret into surrender','Close with Krishna’s assurance of refuge and liberation from sin. Read this devotional teaching alongside the responsibility you have just examined.','After taking a step toward repair, a devotional practice is to offer your remorse to Krishna and release the demand to rewrite the past.']
+  ],
+  practice:'Write three lines: what happened, what repair is still possible, and what you will do differently. Take one repair step without demanding forgiveness from the other person.'
+},
+{
+  id:'shame', group:'feelings', name:'Shame & feeling unworthy', hi:'लज्जा और हीनभावना',
+  words:['shame','ashamed','unworthy','worthless','not good enough','not worthy','hate myself','हीनभावना','शर्म','बेकार हूँ','बेकार हूं','लायक नहीं','sharm'],
+  intro:'See that even Arjuna becomes overwhelmed, read the call to rise in its setting, and find one way to support yourself.',
+  context:'Chapter 1 portrays sorrow and collapse; it does not diagnose Arjuna with shame. Krishna’s sharp language in 2.3 addresses this warrior in a particular crisis. It is not a model for humiliating someone who is struggling, nor a judgment that distress makes a person unworthy.',
+  steps:[
+    ['1.47','Acknowledge the collapse','Begin with the scene of Arjuna setting down his bow, so the reading starts by recognizing distress.','After a difficult presentation, let yourself acknowledge embarrassment before deciding that you are incapable.'],
+    ['2.3','Hear an invitation to rise','Next read Krishna’s challenge in context: the dialogue calls Arjuna back into engagement and continues to address his questions.','Treat one setback as a reason to seek help and try a manageable next step, not as your permanent identity.'],
+    ['6.5','Become an ally to yourself','End with the instruction to lift rather than lower oneself, translated here into a small supportive action.','Replace “I am worthless” with a specific account of what needs practice, then ask for feedback on that skill.']
+  ],
+  practice:'Describe one struggle without an insulting label. Choose a supportive action you would also recommend to a friend.'
+},
+{
+  id:'anxiety', group:'feelings', name:'Anxiety & overthinking', hi:'चिंता और अधिक सोचना',
+  words:['anxious','anxiety','overthink','ruminat','racing thought','restless mind','worried','worry','चिंता','चिन्ता','बेचैनी','बहुत सोच','ज्यादा सोच','chinta','overthinking'],
+  intro:'Start with Arjuna’s description of a restless mind, hear Krishna’s response, and practice returning attention gently.',
+  context:'Gita 6.34–35 concerns the difficulty of disciplining the mind in yoga. The everyday exercise below is an application of that teaching, not a claim that the verses diagnose anxiety or guarantee its disappearance.',
+  steps:[
+    ['6.34','Name the restless mind','First hear Arjuna admit how difficult the mind feels to steady. The question is allowed into the dialogue.','When thoughts keep circling an unanswered message, notice the repetition without treating every imagined outcome as a fact.'],
+    ['6.35','Practice with detachment','Next read Krishna’s acknowledgement of the difficulty and his response: repeated practice and dispassion.','Choose a short period for reflection, then return to your task without requiring complete certainty first.'],
+    ['6.26','Make one gentle return','End with the repeated return of the wandering mind. The verse’s object is the Self; returning to a task is the modern analogy here.','When the same worry interrupts a page you are reading, notice it and come back to the next sentence.']
+  ],
+  practice:'Write the concern, separate what you know from what you imagine, and give one useful task five minutes of attention. Each return counts as practice.'
+},
+{
+  id:'loneliness', group:'feelings', name:'Loneliness & isolation', hi:'अकेलापन और अलगाव',
+  words:['lonely','loneliness','alone','isolat','no friends','left out','अकेला','अकेली','अकेलापन','अलगाव','कोई दोस्त नहीं','akelapan'],
+  intro:'Reflect on being an ally to yourself, notice habits that deepen isolation, and make room for friendship and compassion.',
+  context:'The friend/enemy language of 6.5–6 concerns self-mastery within yoga, not a command to live without other people. Reaching out to others is an editorial application of care, not evidence of spiritual failure.',
+  steps:[
+    ['6.5','Begin with self-support','Start with the instruction to lift yourself rather than deepen the inner attack.','If you spent the evening alone, meet your need for food and rest before calling yourself unwanted.'],
+    ['6.6','Notice what helps or harms','Then examine how a disciplined or ungoverned self can become a friend or an adversary.','Notice whether repeatedly declining invitations or rereading an old rejection leaves you more isolated.'],
+    ['12.13','Turn toward friendship and compassion','End with the text’s qualities of friendliness and compassion, opening a way toward connection.','Send a simple message to someone you trust or join a shared activity without demanding instant closeness.']
+  ],
+  practice:'Do one act of care for yourself and make one small invitation to connect. Another person’s availability is not a measure of your worth.'
+},
+{
+  id:'envy', group:'feelings', name:'Jealousy & envy', hi:'ईर्ष्या और जलन',
+  words:['jealous','jealousy','envy','envious','resent their success','ईर्ष्या','ईर्षा','जलन','irshya','jalan'],
+  intro:'Notice the craving beneath rivalry, read a direct teaching on freedom from envy, then turn toward goodwill.',
+  context:'In an everyday distinction, comparison notices a difference; envy resents another person’s advantage. This is an editorial distinction, not a definition quoted from the Gita. Chapter 14 discusses the three gunas: sattva, rajas and tamas. In 12.13, adveṣṭā means being without hatred; 4.22 explicitly names freedom from envy (vimatsaraḥ).',
+  related:['14.6','14.8'],
+  steps:[
+    ['14.7','Examine craving and attachment','Begin with the account of rajas and its link to thirst and attachment, a lens for examining rivalry without labeling another person.','Notice when a classmate’s achievement becomes a demand that you must immediately outdo them.'],
+    ['4.22','Work without resenting another’s gain','Next read the explicit description of freedom from envy and balance in success and failure.','Use someone else’s good work to identify a skill to learn instead of wishing their project would fail.'],
+    ['12.13','Practice goodwill','End with non-hatred, friendliness and compassion so restraint becomes a positive way of treating others.','Offer an honest congratulations without adding a comment that diminishes the achievement.']
+  ],
+  practice:'Name the specific quality you admire, choose one way to develop it, and express one sincere good wish for the person you compared yourself with.'
+},
+{
+  id:'betrayal', group:'feelings', name:'Betrayal & hurt', hi:'विश्वासघात और आहत मन',
+  words:['betray','hurt','backstab','cheated on','broken trust','wronged','विश्वासघात','धोखा','आहत','dhokha','dhoka'],
+  intro:'Acknowledge the wound, discern what protection and responsibility require, and consider compassion without surrendering your boundaries.',
+  context:'The epics show different responses to being wronged; they do not offer a single rule to forgive, reconcile or retaliate. These Gita readings are placed beside the episodes below as an editorial comparison.',
+  episodes:[
+    {title:'Draupadi: challenge the injustice',text:'In the dice hall, Draupadi questions whether Yudhishthira could stake her after losing himself. Her question exposes the injustice; the burden of responding belongs to the assembly as well.',ref:'Mahabharata · Sabha Parva, Ganguli §LXVI',url:'https://sacred-texts.com/hin/m02/m02066.htm'},
+    {title:'Karna: keep moral responsibility visible',text:'In the same crisis, Karna rejects Vikarna’s defense of Draupadi and supports her humiliation. His role here cautions against treating loyalty or a heroic reputation as proof that an action is right.',ref:'Mahabharata · Sabha Parva, Ganguli §LXVII',url:'https://sacred-texts.com/hin/m02/m02067.htm'},
+    {title:'Rama: choose a response to exile',text:'When Kaikeyi presses for his departure, Rama agrees to fourteen years in the forest to uphold his father’s promise. The episode portrays his chosen royal and filial duty; it does not require a harmed person today to remain in danger.',ref:'Valmiki Ramayana · Ayodhya Kanda 2.19, especially 1–2, 11 and 23',url:'https://www.valmikiramayan.net/ayodhya/sarga19/ayodhyaroman19.htm'}
+  ],
+  steps:[
+    ['2.7','Allow yourself to seek guidance','Begin with Arjuna’s admission that he needs help discerning what is right, rather than demanding an immediate response.','After a broken confidence, tell a trusted person what happened before deciding how much contact feels appropriate.'],
+    ['18.30','Distinguish action from restraint','Next examine the discernment that distinguishes what ought to be done from what ought not to be done.','Separate a necessary boundary or report of wrongdoing from an impulse to publicly humiliate the person.'],
+    ['12.13','Let compassion coexist with protection','End by reflecting on non-hatred and compassion. Forgiveness, renewed trust and reconciliation need not be treated as the same decision.','You can decline further contact while choosing not to spread a rumor in return.']
+  ],
+  practice:'Write down the harm, the boundary you need, and one person who can support a considered response. You do not owe immediate reconciliation.'
+},
+{
+  id:'burnout', group:'feelings', name:'Burnout & exhaustion', hi:'थकान और अत्यधिक दबाव',
+  words:['burnout','burnt out','burned out','burn out','exhaust','overwork','drained','tired','थकान','थक गया','थक गई','थका','थकी','थकावट','thakan'],
+  intro:'Question extreme effort, restore a balanced rhythm, then choose necessary work at a sustainable scale.',
+  context:'Gita 6.16–17 teaches moderation as a condition for yoga. “Burnout” is a modern topic label here, not a condition named in the Sanskrit text.',
+  steps:[
+    ['6.16','Notice the extremes','Start with the rejection of extremes in eating and sleeping, including constant wakefulness.','If you repeatedly skip meals and sleep to finish work, stop treating that pattern as the only sign of commitment.'],
+    ['6.17','Restore proportion','Then read the positive teaching of moderation in food, recreation, effort, sleep and waking.','Put a meal, a break and a realistic stopping time into the same plan as your deadlines.'],
+    ['3.19','Return to necessary action','End with action that ought to be done, without attachment. Apply this through discernment about priorities, not an endless workload.','Choose the essential task and discuss deferring or sharing another task rather than accepting everything.']
+  ],
+  practice:'Protect one period of rest, identify one essential task, and renegotiate one demand that exceeds your present capacity.'
+},
+{
+  id:'disappointment', group:'feelings', name:'Disappointment & unmet expectations', hi:'निराशा और अधूरी अपेक्षाएँ',
+  words:['disappoint','unmet expectation','expectation','let down','did not work out','didn\'t work out','निराश','अपेक्षा','उम्मीद टूट','nirasha'],
+  intro:'Separate effort from entitlement to a result, make room for steadiness, and decide what worthwhile action remains.',
+  context:'The teaching on fruits does not forbid planning, evaluating results or caring about an outcome. This path applies it to loosening the demand that events must fulfill our expectations.',
+  steps:[
+    ['2.47','Separate action from its fruit','Begin by distinguishing the work you can undertake from a guaranteed result; the verse also rejects attachment to inaction.','After a rejected application, acknowledge the disappointment without concluding that your effort was meaningless.'],
+    ['2.48','Practice balance around the result','Then read the instruction to act with steadiness in success and failure, so the result need not govern every next decision.','Review feedback after you have had time to settle, rather than deleting all your work in frustration.'],
+    ['3.19','Choose the work still worth doing','Finish by returning to appropriate action with less clinging, rather than using detachment to stop participating.','Improve one part of your application and choose where to send it next.']
+  ],
+  practice:'Write what you hoped for, what actually happened, and one next action that still expresses your values.'
+},
+{
+  id:'injustice', group:'feelings', name:'Injustice & frustration', hi:'अन्याय और क्षोभ',
+  words:['injustice','unfair','unjust','frustrat','discriminat','stand up against','अन्याय','अनुचित','भेदभाव','क्षोभ','anyay'],
+  intro:'Understand the battlefield duty at the heart of the dialogue, examine what your situation requires, and act without feeding retaliation.',
+  context:'Krishna addresses Arjuna’s kshatriya duty in a particular war. That setting is essential: it is not a blanket permission to use violence in everyday disputes. The modern application here is to challenge harm through considered, proportionate and lawful action while releasing the demand to control every outcome.',
+  steps:[
+    ['2.31','Understand why action matters here','Begin with the Gita’s actual setting: Krishna argues that Arjuna has a responsibility in a righteous battle. Read the claim in its epic context.','When a colleague is treated unfairly, ask what responsibility your own position gives you to help.'],
+    ['18.30','Discern when to act and when to refrain','Next read about distinguishing action, restraint, duty and what ought not to be done; anger alone cannot make that judgment.','Check the facts, hear the affected person, and decide whether speaking up, documenting the issue or finding support would help.'],
+    ['2.47','Act without making revenge the goal','End by separating responsible effort from control of the result, while remembering the verse’s warning against inaction.','Raise the specific concern through an appropriate channel without making another person’s humiliation your measure of success.']
+  ],
+  practice:'Name the harm, the person affected, and one responsible action within your role. Name one retaliatory impulse you will let pass.'
+},
+{
+  id:'mortality', group:'feelings', name:'Fear of death or the unknown', hi:'मृत्यु और अज्ञात का भय',
+  words:['fear of death','afraid of death','scared of death','fear of dying','afraid to die','scared to die','afraid of dying','fear of the unknown','fear of unknown','afraid of the unknown','scared of the unknown','unknown future','fear death','fear dying','mortality','मृत्यु का भय','मौत का डर','मरने से डर','अज्ञात','maut ka dar'],
+  intro:'Read the Gita’s teaching of the imperishable Self, explore its image of changing garments, then acknowledge the limits of ordinary thought.',
+  context:'Gita 2.20–25 presents a spiritual and metaphysical teaching about the Self. The garment image in 2.22 concerns embodiment and rebirth; it is not scientific proof or a demand that grief vanish. This sequence selects three anchors; the remaining verses in the passage are linked below.',
+  related:['2.21','2.23','2.24'],
+  steps:[
+    ['2.20','Read what the text says endures','Start with the central claim that the Self is unborn and imperishable, so the following image has its doctrinal context.','When mortality frightens you, distinguish the text’s teaching from the questions you still hold and give both an honest place in reflection.'],
+    ['2.22','Consider the garment image','Next read how changing bodies is compared with changing worn garments; the image develops the teaching rather than proving it.','Discuss what continuity and change mean to you with someone who can listen without demanding a particular belief.'],
+    ['2.25','Make room for what thought cannot grasp','Close with the description of the Self as unmanifest and beyond thought. Read the exhortation about grief with compassion for actual mourners.','Let uncertainty remain while choosing one act of care for someone who is present in your life today.']
+  ],
+  practice:'Write one question about mortality and one thing you value in being alive today. Bring the question to a trusted teacher or companion and give the value a concrete expression.'
+},
+{
+  id:'ego', group:'growth', name:'Pride & ego', hi:'अहंकार और अभिमान',
+  words:['pride','ego','arrogant','arrogance','only doer','i am the doer','take all the credit','अहंकार','अभिमान','घमंड','ahamkar','ahankar','ghamand'],
+  intro:'Question the claim of sole authorship, recognize the conditions behind action, and return to work with humility and firmness.',
+  context:'Ahamkara concerns the sense of “I” and identification as the doer. The Gita’s account of agency is philosophical, not a reason to deny responsibility for choices. Verse 18.14 belongs with the discussion of the five causes in 18.13–16.',
+  related:['18.13','18.15','18.16'],
+  steps:[
+    ['3.27','Question “I alone did this”','Begin with the warning that egoism overlooks the activity of prakriti’s gunas.','After a success, notice whether you tell the story as if no teacher, teammate or circumstance contributed.'],
+    ['18.14','Recognize multiple conditions of action','Then read the five causes named in the text, including the body, agent, instruments, efforts and divine factor.','List the people, tools and opportunities that made your work possible while still owning your part.'],
+    ['18.26','Act with humility and enthusiasm','Finish with the portrait of an agent who is firm and energetic without egoistic attachment.','Give colleagues clear credit and remain willing to correct your own mistake.']
+  ],
+  practice:'Thank someone whose contribution you overlooked, and name one responsibility you still need to fulfill yourself.'
+},
+{
+  id:'doubt', group:'growth', name:'Doubt & loss of faith', hi:'संशय और आस्था के प्रश्न',
+  words:['doubt','faith','belief','believe','skeptic','sceptic','संशय','संदेह','आस्था','विश्वास नहीं','श्रद्धा','sandeh'],
+  intro:'Begin with sincere inquiry, read the warning about unresolved doubt in context, then return to reflection and choice.',
+  context:'Gita 4.40 uses strong language about ignorance, lack of faith and doubt. Read it alongside 4.34, which invites inquiry, and 18.63, which asks Arjuna to reflect and choose. It should not be used to shame an honest question or demand blind acceptance.',
+  steps:[
+    ['4.34','Make the question clear','Start with learning through humility, inquiry and service; questioning belongs within the teaching.','Ask a teacher what a passage means and how different commentators understand it.'],
+    ['4.40','Examine doubt that keeps you stuck','Next read the warning in the chapter’s setting of knowledge and trust, rather than applying it as a verdict on everyone who questions belief.','Notice whether you are exploring a specific uncertainty or endlessly postponing any considered commitment.'],
+    ['18.63','Reflect fully and choose','End where Krishna explicitly invites reflection and Arjuna’s own considered action.','Write what you understand, what remains uncertain and what practice you can honestly undertake for now.']
+  ],
+  practice:'Turn a broad doubt into one answerable question. Compare a named commentary, discuss it respectfully, and record what you think after reflection.'
+},
+{
+  id:'purpose', group:'growth', name:'Purpose & feeling lost', hi:'जीवन की दिशा और स्वधर्म',
+  words:['purpose','feel lost','feeling lost','lost in life','lost my way','my path','direction in life','meaning of life','svadharma','उद्देश्य','जीवन की दिशा','स्वधर्म','राह भटक','दिशाहीन','uddeshya'],
+  intro:'Examine your own responsibilities, consider work in relation to your nature, and make a choice after reflection.',
+  context:'Svadharma is discussed within the Gita’s social, ethical and spiritual framework. Verses 3.35 and 18.47 are not a modern career test or an instruction to obey every role imposed on you. Finding meaningful work is a present-day analogy that still requires ethical judgment.',
+  steps:[
+    ['3.35','Look beyond copying another’s path','Begin with the distinction between one’s own duty and another’s, even when the latter looks more impressive.','Ask whether you want a course of study because it fits your commitments or because it brings someone else status.'],
+    ['18.47','Consider nature and responsibility together','Next read the connection between one’s work and nature in the chapter’s wider discussion of duties.','Consider your abilities, the people who depend on you and the effects of the work, rather than treating enjoyment as the only criterion.'],
+    ['18.63','Choose after reflection','Finish by taking responsibility for a considered choice, with room to keep learning.','Try a small project or conversation that lets you examine a possible direction before making a larger commitment.']
+  ],
+  practice:'List one ability, one responsibility and one need you could help meet. Choose a small action where those three can come together.'
+},
+{
+  id:'boredom', group:'growth', name:'Boredom & restlessness', hi:'ऊब और चंचलता',
+  words:['bored','boredom','restless','stimulation','monoton','routine work','ऊब','उबाऊ','चंचल','मन नहीं लगता','boring'],
+  intro:'Find the purpose of an ordinary task, practice the return of attention, and loosen the demand for constant stimulation.',
+  context:'The Gita does not name a modern “need for stimulation” theory. This path applies its teaching on necessary action and yogic attention to routine work. In 6.26, the original focus is the Self, not workplace productivity.',
+  steps:[
+    ['3.19','Give ordinary work a considered purpose','Begin with doing what ought to be done, without making novelty the condition for effort.','Connect washing dishes or reviewing notes with the person or commitment that the task serves.'],
+    ['6.26','Return when attention wanders','Next use the repeated return of attention as an analogy for staying with a modest task.','When you reach for a new tab after two minutes, notice the urge and return to one small part of the work.'],
+    ['6.35','Repeat without demanding excitement','End with practice and detachment, which allows repetition without requiring a special feeling each time.','Complete a brief practice period, then take a deliberate break instead of continually changing tasks.']
+  ],
+  practice:'Choose one ordinary task, write whom or what it serves, and give it ten attentive minutes before taking a planned break.'
+},
+{
+  id:'gratitude', group:'positive', name:'Gratitude & contentment', hi:'कृतज्ञता और संतोष',
+  words:['gratitude','grateful','thankful','contentment','content','santosha','santosh','कृतज्ञ','आभार','संतोष','सन्तोष','shukr'],
+  intro:'Explore contentment amid praise and blame, loosen comparison with outcomes, and make appreciation a steady practice.',
+  context:'Verses 12.14 and 12.19 describe a devotee’s contentment (santuṣṭa). Gratitude exercises are an editorial way of reflecting on this quality, not a practice explicitly prescribed in these verses. Contentment need not prevent efforts to meet real needs or correct injustice.',
+  steps:[
+    ['12.19','Find steadiness beyond applause','Begin with contentment and balance in praise and blame within the portrait of a devoted person.','Notice a quiet day of worthwhile work even when no one congratulates you.'],
+    ['4.22','Appreciate without keeping a score','Then consider satisfaction with what comes, freedom from envy and balance in results.','Enjoy the help you received without measuring it against the attention someone else received.'],
+    ['12.14','Let contentment become a steady disposition','End with contentment joined to discipline, conviction and devotion, rather than a passing pleasant mood.','Thank someone for a specific kindness and carry that appreciation into a considerate action.']
+  ],
+  practice:'Name one thing you received, one effort you can appreciate and one person you can thank specifically.'
+},
+{
+  id:'courage', group:'positive', name:'Courage & compassion', hi:'साहस और करुणा',
+  words:['courage','courageous','brave','bravery','compassion','kindness','साहस','हिम्मत','करुणा','दयालु','दया','himmat','karuna'],
+  intro:'Read fearlessness among the divine qualities, give courage a compassionate direction, and sustain it with steady commitment.',
+  context:'Acting thoughtfully despite fear is the modern application here. Gita 16.1 names fearlessness among other qualities; 12.13–14 joins compassion and non-hatred with discipline and devotion. Courage is not reduced to aggression or to never feeling afraid.',
+  steps:[
+    ['16.1','Begin with the quality of fearlessness','First place courage beside purity, self-control and generosity in the text’s list, not beside domination.','Ask a difficult but respectful question when a decision may harm someone.'],
+    ['12.13','Give strength a compassionate direction','Next bring friendliness, non-hatred and compassion into how you act, so courage protects rather than humiliates.','Stand beside someone being excluded while describing the problem without insulting others.'],
+    ['12.14','Sustain the commitment','End with steadiness, self-control and firm resolve within devotion; caring action requires more than a dramatic moment.','Follow up with the person you supported and do the practical thing you promised.']
+  ],
+  practice:'Choose one kind action you have been postponing out of fear. Make it specific, proportionate and possible today.'
+}
+);
+const JOURNEY_GROUPS=[
+  {id:'feelings',name:'Difficult feelings',hi:'मन की कठिन अवस्थाएँ'},
+  {id:'growth',name:'Inner conflict and growth',hi:'आंतरिक द्वंद्व और विकास'},
+  {id:'positive',name:'Positive states',hi:'सकारात्मक भाव'},
+  {id:'everyday',name:'More everyday concerns',hi:'रोज़मर्रा के अन्य प्रश्न'}
 ];
 const HABITS=[
 {id:'scroll',name:'Mindless scrolling',verse:'6.26',cue:'When I reach for my phone during study',action:'I will put it out of reach and read one paragraph.',why:'The original verse teaches returning the mind to the Self. Returning to a chosen task is a modern application.'},

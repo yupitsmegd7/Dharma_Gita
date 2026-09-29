@@ -57,14 +57,42 @@ For a concern such as **“I am afraid of failing my exam,”** the curated *Fea
 
 The website explains why the verses appear in that order. Its suggested practice is to write down one action you can complete today and one result you will stop trying to control.
 
-This sequence is an editorial application of the passages. The question feature uses **eight curated themes and local keyword matching**; it does not generate new scripture or claim to answer every possible question.
+This sequence is an editorial application of the passages. The question feature uses **24 curated themes and local keyword matching**; it does not generate new scripture or claim to answer every possible question.
+
+<details>
+<summary><strong>The 16 additional Ask the Gita themes</strong></summary>
+
+Each path includes complete Sanskrit verses, the existing attributed Hindi and English translations, verse-level source links, an explanation of the reading order, everyday examples and one practical reflection. Context notes distinguish the original setting from modern applications.
+
+| Theme | Reading order |
+| --- | --- |
+| Guilt & regret | 1.45 → 2.7 → 18.66 |
+| Shame & feeling unworthy | 1.47 → 2.3 → 6.5 |
+| Anxiety & overthinking | 6.34 → 6.35 → 6.26 |
+| Loneliness & isolation | 6.5 → 6.6 → 12.13 |
+| Jealousy & envy | 14.7 → 4.22 → 12.13 |
+| Betrayal & hurt | 2.7 → 18.30 → 12.13 |
+| Burnout & exhaustion | 6.16 → 6.17 → 3.19 |
+| Disappointment & unmet expectations | 2.47 → 2.48 → 3.19 |
+| Injustice & frustration | 2.31 → 18.30 → 2.47 |
+| Fear of death or the unknown | 2.20 → 2.22 → 2.25; companion links to 2.21, 2.23 and 2.24 |
+| Pride & ego | 3.27 → 18.14 → 18.26 |
+| Doubt & loss of faith | 4.34 → 4.40 → 18.63 |
+| Purpose & feeling lost | 3.35 → 18.47 → 18.63 |
+| Boredom & restlessness | 3.19 → 6.26 → 6.35 |
+| Gratitude & contentment | 12.19 → 4.22 → 12.14 |
+| Courage & compassion | 16.1 → 12.13 → 12.14 |
+
+The betrayal path also links specific episodes involving Draupadi, Karna and Rama. The eight original paths remain available. Matching is local and uses English, Hindi and selected Romanized Hindi keywords; choosing a topic manually always remains possible.
+
+</details>
 
 ## Explore the study
 
 | Section | What is inside |
 | --- | --- |
 | **📖 The Gita** | All 18 chapters; Sanskrit, Roman transliteration, Hindi and English; chapter and verse navigation; search; chapter summaries; real-life examples; passage-level source links. |
-| **💬 Ask the Gita** | Eight guided reading paths for concerns such as failure, anger, distraction and attachment, with a reason for every step in the sequence. |
+| **💬 Ask the Gita** | 24 guided reading paths, grouped into difficult feelings, inner conflict and growth, positive states, and everyday concerns. Each path explains its verse order and includes a practical example for every step. |
 | **🪔 Mantras** | The third sidebar section: 54 complete selected mantra and prayer units, 14 feeling/situation filters, multilingual search, text-tradition filters and four reading modes. |
 | **👥 Lives & lessons** | Eight studies of Mahabharata and Ramayana characters, connecting particular episodes with questions about how we act and treat others. |
 | **🌱 Daily practice** | A customizable habit, a trigger, a replacement action, a related Gita verse and a seven-session practice record. |
