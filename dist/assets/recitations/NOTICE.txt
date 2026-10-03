@@ -20,3 +20,14 @@ service currently limits generation to ten shlokas per day per network and
 may also be subject to GPU availability. The browser caches up to 20 chants
 for replay. The complete selected Sanskrit text, without its reference digits,
 is sent to that service. The reader's original displayed text is unchanged.
+
+Every one of the 701 reader entries also supports browser read-aloud when a
+Sanskrit or Hindi speech voice is available. A failed/timed-out AI request
+switches to this fallback; Read aloud now skips waiting. The app reads every
+line of the current verse, including speaker introductions, never a substitute
+sample. Sanskrit voices are preferred; Hindi voices are explicitly identified
+because Sanskrit pronunciation and chanting cadence can differ. This fallback
+is labelled Voice rather than AI, and is not represented as a pandit recording
+or as the Vagdhenu model. Voice availability and quality depend on the device.
+The selected speech provider may process speech remotely; local-only processing
+is not guaranteed. The app does not send questions or translations for speech.

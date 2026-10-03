@@ -9,10 +9,13 @@ const gitaRecitation = (() => {
   const bundled = {'2.47':'/assets/recitations/2.47.mp3'};
   let ref = null, phase = 'idle', message = '', player = null;
   let controller = null, objectUrl = null, generation = 0;
+  let output = 'chant', speech = null, speechVoice = null, speechParts = [], speechIndex = 0;
+  let speechTimer = null, speechEpoch = 0, serviceRetryAt = 0;
+  const synth = window.speechSynthesis;
   const speaker = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>';
   const pauseIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>';
   function markup(){
-    return `<button type="button" id="recite-shloka" class="recite-button" aria-pressed="false" aria-describedby="recitation-status" title="AI-generated Sanskrit chant · Vāgdhenu. New chants may take a minute; the public service allows up to 10 per day per network.">${speaker}<span class="recite-label">Recite</span><small>AI</small></button>`;
+    return `<button type="button" id="recite-shloka" class="recite-button" aria-pressed="false" aria-describedby="recitation-status" title="Recite this complete Sanskrit verse. AI chant when available; a device voice can read any verse if the chant service is busy.">${speaker}<span class="recite-label">Recite</span><small>AI</small></button>`;
   }
   function statusMarkup(){
     return '<p id="recitation-status" class="recitation-status" role="status" aria-live="polite" hidden></p>';
@@ -21,26 +24,38 @@ const gitaRecitation = (() => {
     const button = document.getElementById('recite-shloka');
     if (!button) return;
     const labels = {idle:'Recite',loading:'Cancel',playing:'Pause',paused:'Resume',ready:'Play',error:'Retry'};
-    button.innerHTML = (phase==='playing'?pauseIcon:speaker)+`<span class="recite-label">${labels[phase]}</span><small>AI</small>`;
+    button.innerHTML = (phase==='playing'?pauseIcon:speaker)+`<span class="recite-label">${labels[phase]}</span><small>${output==='device'?'Voice':'AI'}</small>`;
     button.dataset.phase = phase;
+    button.dataset.output = output;
     button.setAttribute('aria-pressed',String(phase==='playing'));
     button.setAttribute('aria-label',phase==='loading'?'Cancel Sanskrit recitation preparation':`${labels[phase]} Sanskrit shloka ${state.ref}`);
     const status = document.getElementById('recitation-status');
     if (status) {
       status.hidden = !message;
       status.textContent = message;
-      if (message) {
+      if (message && output==='chant') {
         const credit = document.createElement('a');
         credit.href = 'https://huggingface.co/prathoshap/vagdhenu';
         credit.target = '_blank'; credit.rel = 'noopener noreferrer';
         credit.textContent = 'Vāgdhenu · AI chant';
         status.append(' ',credit);
       }
+      if (phase==='loading' && output==='chant' && synth && window.SpeechSynthesisUtterance) {
+        const immediate=document.createElement('button');
+        immediate.type='button';immediate.className='text-button';
+        immediate.id='recite-now';immediate.textContent='Read aloud now';
+        immediate.onclick=()=>useDeviceVoice(byRef[state.ref]);
+        status.append(' ',immediate);
+      }
     }
   }
   function stop(){
     generation++;
     controller?.abort(); controller=null;
+    clearTimeout(speechTimer);speechTimer=null;speechEpoch++;
+    if(speech){speech.onend=null;speech.onerror=null;speech.onstart=null;speech=null;}
+    if(output==='device') synth?.cancel();
+    speechParts=[];speechIndex=0;speechVoice=null;output='chant';
     if (player) {player.onended=null;player.onerror=null;player.pause();player.removeAttribute('src');player.load();player=null;}
     if (objectUrl) {URL.revokeObjectURL(objectUrl);objectUrl=null;}
     ref=null;phase='idle';message='';update();
@@ -53,6 +68,62 @@ const gitaRecitation = (() => {
   function verseForSpeech(text){
     // Preserve the full verse and speaker introduction, omitting reference digits.
     return text.replace(/[0-9०-९]+[.।][0-9०-९]+/g,'').replace(/।{2,}/g,'॥').replace(/॥{2,}/g,'॥').replace(/\n\s*\n/g,'\n').trim();
+  }
+  function availableVoice(){
+    const voices=synth?.getVoices()||[];
+    const language=v=>v.lang.toLowerCase().replace(/_/g,'-').split('-')[0];
+    // Never route Devanagari to an unrelated English/default voice.
+    return voices.find(v=>['sa','san'].includes(language(v)))||voices.find(v=>language(v)==='hi')||null;
+  }
+  function waitForVoice(signal){
+    const voice=availableVoice();
+    if(voice||!synth||signal.aborted)return Promise.resolve(voice);
+    return new Promise(resolve=>{
+      let timer;
+      const done=()=>{clearTimeout(timer);synth.removeEventListener('voiceschanged',changed);signal.removeEventListener('abort',done);resolve(availableVoice());};
+      const changed=()=>{if(availableVoice())done();};
+      synth.addEventListener('voiceschanged',changed);signal.addEventListener('abort',done,{once:true});
+      timer=setTimeout(done,1500);
+      changed();
+    });
+  }
+  function deviceDescription(){
+    const isSanskrit=/^(sa|san)(-|_|$)/i.test(speechVoice?.lang||'');
+    return isSanskrit?'Sanskrit read-aloud · device voice.':'Sanskrit text read by a Hindi device voice; pronunciation and chant rhythm may differ.';
+  }
+  function speakPart(token){
+    if(token!==generation||phase==='paused')return;
+    if(speechIndex>=speechParts.length){phase='ready';message='Complete verse read. Tap Play to listen again.';update();return;}
+    const epoch=++speechEpoch;
+    const part=new window.SpeechSynthesisUtterance(speechParts[speechIndex]);speech=part;
+    part.voice=speechVoice;part.lang=speechVoice.lang;part.rate=.82;part.pitch=1;part.volume=1;
+    const current=()=>token===generation&&epoch===speechEpoch;
+    part.onstart=()=>{if(current()){clearTimeout(speechTimer);phase='playing';message=deviceDescription();update();}};
+    part.onend=()=>{if(current()){clearTimeout(speechTimer);speechIndex++;speakPart(token);}};
+    part.onerror=e=>{
+      if(!current()||['canceled','interrupted'].includes(e.error))return;
+      clearTimeout(speechTimer);
+      if(e.error==='not-allowed'){phase='ready';message='Tap Play to start the device voice.';}
+      else {phase='error';message='The device voice could not read this verse. Please check your speech/language settings and tap Retry.';}
+      update();
+    };
+    phase='playing';message=deviceDescription();update();
+    // Short complete lines avoid browsers truncating one long utterance.
+    speechTimer=setTimeout(()=>{if(current()&&phase==='playing'){speechEpoch++;synth.cancel();phase='ready';message='The device voice did not start. Tap Play, or enable a Hindi/Sanskrit voice in your device settings.';update();}},7000);
+    synth.speak(part);
+  }
+  async function useDeviceVoice(verse){
+    if(!verse||state.page!=='reader')return;
+    stop();ref=verse.ref;output='device';const token=generation;
+    controller=new AbortController();const request=controller;
+    phase='loading';message='Loading a voice for the complete Sanskrit verse…';update();
+    const voice=await waitForVoice(request.signal);
+    if(token!==generation)return;
+    controller=null;
+    if(!synth||!window.SpeechSynthesisUtterance||!voice){phase='error';message='No Sanskrit or Hindi device voice is available. Enable one in your device’s speech settings, then tap Retry. AI chanting also needs its service to be available.';update();return;}
+    speechVoice=voice;
+    speechParts=verseForSpeech(verse.sanskrit).split(/(?:\n+|[।॥]+)/u).map(s=>s.trim()).filter(Boolean);
+    speechIndex=0;synth.cancel();synth.resume();speakPart(token);
   }
   async function cacheKey(verse){
     // Include the exact prepared text: later corpus corrections cannot replay stale audio.
@@ -129,6 +200,17 @@ const gitaRecitation = (() => {
   async function toggle(){
     if (state.page!=='reader'||!byRef[state.ref]) return;
     if (phase==='loading') {stop();return;}
+    if(output==='device'&&ref===state.ref&&['playing','paused','ready'].includes(phase)){
+      if(phase==='playing'){
+        // Some mobile engines implement pause as cancel. Resume the current
+        // complete line so no words are silently skipped.
+        speechEpoch++;clearTimeout(speechTimer);synth.cancel();phase='paused';message='Paused. Resume repeats the current line.';update();
+      } else {
+        if(phase==='ready')speechIndex=0;
+        phase='playing';synth.resume();speakPart(generation);
+      }
+      return;
+    }
     if (ref===state.ref&&player&&['playing','paused','ready'].includes(phase)) {
       if (phase==='playing') {player.pause();phase='paused';message='Recitation paused.';update();}
       else {if (player.ended) player.currentTime=0;await play(generation);}
@@ -136,8 +218,8 @@ const gitaRecitation = (() => {
     }
     stop();ref=state.ref;const verse=byRef[ref],token=generation;
     controller=new AbortController();const request=controller;
-    phase='loading';message='Preparing the Sanskrit chant. A new verse can take 30–60 seconds. Tap Cancel to stop waiting.';update();
-    const timeout=setTimeout(()=>request.abort(),120000);
+    phase='loading';message='Preparing the complete Sanskrit chant. You can read it aloud now using your device voice.';update();
+    const timeout=setTimeout(()=>request.abort(),45000);
     try {
       let blob;
       const cached=await getCached(verse);
@@ -147,16 +229,23 @@ const gitaRecitation = (() => {
         const response=await fetch(bundled[verse.ref],{signal:request.signal});
         if (!response.ok) throw new Error('The recitation file could not be loaded. Please tap Retry.');
         blob=await response.blob();
-      } else blob=await generatedAudio(verse,request.signal);
+      } else {
+        if(Date.now()<serviceRetryAt){clearTimeout(timeout);await useDeviceVoice(verse);return;}
+        blob=await generatedAudio(verse,request.signal);
+      }
       if (token!==generation) return;
       if (!cached) void saveCached(verse,blob);
       objectUrl=URL.createObjectURL(blob);player=new Audio(objectUrl);player.preload='auto';
       player.onended=()=>{if(token===generation){phase='ready';message='Recitation complete. Tap Play to listen again.';update();}};
-      player.onerror=()=>{if(token===generation){phase='error';message='Audio could not play. Please tap Retry.';update();}};
+      player.onerror=()=>{if(token===generation)void useDeviceVoice(verse);};
       await play(token);
     } catch (error) {
       if (token!==generation) return;
-      phase='error';message=error.name==='AbortError'?'The chant took too long to prepare. Please try again later.':(error.message?.startsWith('The ')?error.message:'The AI chant service could not be reached. Please check your connection and try again.');update();
+      // All 701 entries have their own complete text, not one shared sample.
+      // Stop hitting a busy public demo on every page; use device speech for
+      // five minutes, then allow a fresh AI request. Cached chants still win.
+      serviceRetryAt=Date.now()+5*60*1000;
+      clearTimeout(timeout);await useDeviceVoice(verse);
     } finally {clearTimeout(timeout);if(token===generation) controller=null;}
   }
   window.addEventListener('pagehide',stop);
