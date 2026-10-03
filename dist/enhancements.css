@@ -99,3 +99,15 @@ footer.mythic-frame .chakra-rotor{filter:drop-shadow(0 2px 5px #1b090b90)}
 .journey-episodes article p{font-size:1rem;line-height:1.8;margin:0 0 12px}
 .journey-episodes .source-link{font-size:.875rem;overflow-wrap:anywhere}
 @media(max-width:520px){.journey-topic-group h3 span{display:block;margin-left:0}.journey-context{padding:16px}.journey-episodes{margin-left:38px;padding:18px 16px}}
+
+/* The Gita reader only: compact recitation action beside the language options. */
+.reader-language-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px;min-width:0}
+.recite-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:6px 11px;border:1px solid var(--line);border-radius:5px;background:var(--cream);color:var(--wine);font-size:.875rem;line-height:1.4;white-space:nowrap;transition:background .15s,border-color .15s}
+.recite-button:hover,.recite-button:focus-visible{background:#eee7da;border-color:var(--gold);color:var(--wine)}
+.recite-button[aria-pressed=true]{background:var(--wine);border-color:var(--wine);color:var(--cream)}
+.recite-button small{font-size:.75rem;letter-spacing:.04em;opacity:.75;border-left:1px solid currentColor;padding-left:6px}
+.recite-button svg{flex-shrink:0}
+.recitation-status{margin:10px 0 0;font-size:.875rem;line-height:1.6;color:var(--muted)}
+.recitation-status[hidden]{display:none}
+.recitation-status a{color:var(--wine);text-underline-offset:3px;white-space:nowrap}
+@media(max-width:380px){.reader-language-actions{gap:6px}.reader-language-actions .segmented button{padding-left:10px;padding-right:10px}.recite-button{padding-left:9px;padding-right:9px}}

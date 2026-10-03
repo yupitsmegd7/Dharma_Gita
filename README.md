@@ -91,10 +91,10 @@ The betrayal path also links specific episodes involving Draupadi, Karna and Ram
 
 | Section | What is inside |
 | --- | --- |
-| **📖 The Gita** | All 18 chapters; Sanskrit, Roman transliteration, Hindi and English; chapter and verse navigation; search; chapter summaries; real-life examples; passage-level source links. |
+| **📖 The Gita** | All 18 chapters; Sanskrit, Roman transliteration, Hindi and English; chapter and verse navigation; search; chapter summaries; real-life examples; passage-level source links; an AI Sanskrit chant button beside **Both**. |
 | **💬 Ask the Gita** | 24 guided reading paths, grouped into difficult feelings, inner conflict and growth, positive states, and everyday concerns. Each path explains its verse order and includes a practical example for every step. |
 | **🪔 Mantras** | The third sidebar section: 54 complete selected mantra and prayer units, 14 feeling/situation filters, multilingual search, text-tradition filters and four reading modes. |
-| **👥 Lives & lessons** | Eight studies of Mahabharata and Ramayana characters, connecting particular episodes with questions about how we act and treat others. |
+| **👥 Lives & lessons** | Sixteen studies of Mahabharata and Ramayana characters, connecting particular episodes with questions about how we act and treat others. |
 | **🌱 Daily practice** | A customizable habit, a trigger, a replacement action, a related Gita verse and a seven-session practice record. |
 | **🏹 The Mahabharata** | Nine introductory roles and 21 formation/deployment studies, with Pandava and Kaurava filters, documented positions, diagrams where appropriate and source citations. |
 | **📚 Scripture library** | An introduction to six scriptural families, with suggested ways to begin exploring them. |
@@ -128,7 +128,7 @@ The original text, an attributed translation and a present-day application are d
 | **English Gita translation** | Attributed to **Swami Sivananda**. |
 | **Hindi Gita translation** | Attributed to **Swami Ramsukhdas**, except 13.1, which uses **Swami Tejomayananda** because the Ramsukhdas field has no translation for that entry. |
 | **Mahabharata episodes and formations** | **K. M. Ganguli's 1883–1896 translation**, with book and section references, available through the [Internet Sacred Text Archive](https://sacred-texts.com/hin/maha/index.htm) and SriPedia. |
-| **Ramayana episodes** | Kanda and sarga references through [IIT Kanpur's Valmiki Ramayanam](https://www.valmiki.iitk.ac.in/). |
+| **Ramayana episodes** | Kanda and sarga references through [IIT Kanpur's Valmiki Ramayanam](https://www.valmiki.iitk.ac.in/) and the attributed translations at [ValmikiRamayan.net](https://www.valmikiramayan.net/). |
 | **Scriptural-family overview** | D. C. Rao / Hindu American Foundation's introductory guide, identified as a modern overview. |
 | **Mantra meanings and daily reflections** | Plain-language editorial Hindi and English renderings, with source links and variant or attribution notes where applicable. |
 | **Modern examples and habit exercises** | Editorial suggestions for reflection and practice, not quotations claimed to appear in scripture. |
@@ -181,8 +181,13 @@ On Windows, use `py` instead of `python` if needed. Serve the folder over HTTP; 
 | **Navigation and interaction** | Vanilla JavaScript and hash-based routes. |
 | **Scripture data** | Bundled JSON and JavaScript collections with reference metadata. |
 | **Question matching** | Local keyword/theme matching against curated reading paths. |
+| **Sanskrit recitation** | [Vāgdhenu](https://huggingface.co/prathoshap/vagdhenu) AI chant, with pause/resume and a browser audio cache. |
 | **Saved practice** | Browser `localStorage` for the habit record and reading preferences. |
 | **Optional integration** | WebMCP tool registration when a supporting browser exposes it. |
+
+The **Recite · AI** button appears beside **Both** in The Gita reader. Vāgdhenu uses a voice its author published for recitation and study; this is generated audio, not a recording of a pandit. The complete Sanskrit verse is sent only when you press Recite. Verse 2.47 is bundled for immediate playback; other verses use the public chant service, may take 30–60 seconds, and depend on its availability and limit of **10 new chants per day per network**. Up to 20 generated verses are cached locally for replay. Navigating to another verse or section stops playback. AI pronunciation and meter may vary; audio is a listening aid, not a textual authority. See the [audio attribution](dist/assets/recitations/NOTICE.txt).
+
+Lives & lessons now includes **Yudhishthira, Bhima, Bhishma, Duryodhana, Sita, Lakshmana, Vibhishana and Jatayu**, alongside the original eight characters. Each addition links its episode, separates the narrative from modern application, and includes a contextual nuance.
 
 Practice records stay in the browser where they were created; they do not sync between devices. Questions are matched locally and are not sent to an AI service.
 
@@ -198,9 +203,10 @@ Practice records stay in the browser where they were created; they do not sync b
 | [`dist/mantras.js`](dist/mantras.js) | Full selected passages, meanings, transliterations and sources. |
 | [`dist/mantras-view.js`](dist/mantras-view.js) | Mantra discovery, filters and reader. |
 | [`dist/formations.js`](dist/formations.js) | Expanded formation catalogue, source references and diagrams. |
+| [`dist/recitation.js`](dist/recitation.js) | On-demand Sanskrit audio, playback state, service errors and bounded browser caching. |
 | [`dist/motion.js`](dist/motion.js) | Chakra assembly, page turns and arrow-key handling. |
 | `dist/style.css`, `dist/mantras.css`, `dist/enhancements.css` | Theme, responsive layout and component styling. |
-| [`dist/assets/`](dist/assets/) | The site's three decorative artworks. |
+| [`dist/assets/`](dist/assets/) | Decorative artworks and the attributed introductory recitation audio. |
 | [`data/`](data/) | Retrieved corpus, authors, chapter metadata and provenance. |
 
 ## Verification and provenance
